@@ -24,3 +24,4 @@ clean:
 		$(MAKE) -C $$dir clean; \
 		rm -f $$dir/verification_run.log; \
 	done
+ 

@@ -9,10 +9,10 @@
   <img src="https://img.shields.io/badge/Status-Silicon_Ready-brightgreen?style=for-the-badge" alt="Status" />
   <img src="https://img.shields.io/badge/License-Apache_2.0-yellow?style=for-the-badge" alt="License" />
   <img src="https://img.shields.io/badge/PPA-Optimized-purple?style=for-the-badge" alt="PPA Optimized" />
-  <img src="https://img.shields.io/badge/Node-Sky130-lightgrey?style=for-the-badge" alt="Node" />
+  <img src="https://img.shields.io/badge/Node-IHP130_SG13G2-lightgrey?style=for-the-badge" alt="Node" />
 </p>
 
-An ultra-compact 8-bit Harvard Architecture microcontroller designed specifically for the Tiny Tapeout platform. Built for extreme efficiency, it packs a Turing-complete CPU, SRAM, fully dynamic UART, PWM, and GPIO into a single 1x1 Sky130 tile.
+An ultra-compact 8-bit Harvard Architecture microcontroller designed specifically for the Tiny Tapeout platform. Built for extreme efficiency, it packs a Turing-complete CPU, SRAM, fully dynamic UART, PWM, and GPIO into a single 1x1 IHP SG13G2 tile.
 
 </div>
 
@@ -32,9 +32,9 @@ An ultra-compact 8-bit Harvard Architecture microcontroller designed specificall
 
 ## Silicon Specifications
 
-TinySoC is designed to maximize computational density within a constrained 1x1 tile footprint on the SkyWater 130nm node. 
+TinySoC is designed to maximize computational density within a constrained 1x1 tile footprint on the IHP SG13G2 130nm BiCMOS node. 
 
-* **Target Density:** 0.90 (PPA optimized with down-counter architecture for maximum routing space).
+* **Target Density:** 0.88 (PPA optimized with down-counter architecture for maximum routing space).
 * **Operating Frequency:** 50 MHz native simulation (Dynamically adaptable to system clock).
 * **Bus Architecture:** 8-bit internal data bus, 8-bit multiplexed external instruction fetch.
 
@@ -122,7 +122,7 @@ TinySoC features a fully dynamic, software-configurable UART transceiver. By uti
 
 The baud rate formula is: `Divider = Clock_Frequency / Target_Baud_Rate`
 
-For example, to achieve a 115200 baud rate on a 50 MHz system clock, the divider is `434` (`0x01B2`). The firmware simply writes `0xB2` to `0x28` and `0x01` to `0x29`. The hardware architecture employs a magnitude comparator (`<`) rather than an equality operator, guaranteeing that mid-transmission baud rate changes will not lock up the finite state machine.
+For example, to achieve a 115200 baud rate on a 50 MHz system clock, the divider is `434` (`0x01B2`). The firmware simply writes `0xB2` to `0x28` and `0x01` to `0x29`. The hardware architecture employs an ultra-efficient zero-check down-counter rather than a massive magnitude comparator, guaranteeing that mid-transmission baud rate changes will not lock up the finite state machine.
 
 ### 2. Pulse Width Modulation (PWM)
 The 8-bit PWM generator provides a background continuous waveform on `uio[7]`. By writing a value from `0x00` to `0xFF` to `0x26`, the duty cycle can be precisely controlled from 0% to 100%. The PWM counter runs asynchronously from the CPU state machine, meaning it requires zero CPU overhead to maintain the waveform.

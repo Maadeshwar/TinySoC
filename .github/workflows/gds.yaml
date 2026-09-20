@@ -16,7 +16,7 @@ jobs:
       - name: Build GDS
         uses: TinyTapeout/tt-gds-action@tt08
         with:
-          flow: openlane2
+          flow: ihp-sg13g2
 
   precheck:
     needs: gds

@@ -85,3 +85,4 @@ if __name__ == '__main__':
     for b1, b2, text, addr in binary:
         print(f'    0x{b1:02X}, 0x{b2:02X}, // 0x{addr:02X}: {text}')
     print('};')
+ 

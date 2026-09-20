@@ -2,7 +2,7 @@
 
 ## Overview
 
-TinySoC is a highly optimized, 8-bit Harvard Architecture microcontroller designed to fit securely inside a 1x1 Tiny Tapeout tile (SkyWater 130nm). It executes instructions out of an external ROM or memory emulator connected to the input pins, while handling internal data through its onboard 8-byte RAM and memory-mapped peripheral registers.
+TinySoC is a highly optimized, 8-bit Harvard Architecture microcontroller designed to fit securely inside a 1x1 Tiny Tapeout tile (IHP SG13G2 130nm). It executes instructions out of an external ROM or memory emulator connected to the input pins, while handling internal data through its onboard 8-byte RAM and memory-mapped peripheral registers.
 
 Despite its microscopic footprint, the core features a fully functional 3-stage pipeline (Fetch, Fetch Operand, Execute) ensuring stable timing at 50 MHz, and a rich 17-instruction ISA supporting conditional branching, arithmetic flags, and hardware subroutines (CALL/RET).
 
@@ -81,3 +81,4 @@ Write any 8-bit value to `0x26` to set the duty cycle of the `PWM OUT` pin. `0x0
 A custom Python assembler is provided in the `software/` directory of the repository. It converts custom mnemonics and resolves jump labels into C-compatible hex arrays for immediate deployment onto microcontroller ROM emulators (like the RP2040 on the TT Demo Board).
 
 See `software/demo.asm` for an example application.
+ 
